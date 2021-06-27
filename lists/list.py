@@ -72,3 +72,10 @@ for d in data:
         shrubs.append(d)
 print("Flowers:{}".format(flowers))
 print("Shrubs:{}".format(shrubs))
+
+shrubs_idx = [item for item in shrubs]
+for item in shrubs_idx:
+    if item in shrubs:
+        shrubs.remove(item)
+
+print("Shrubs:{}:{}".format(len(shrubs), shrubs))

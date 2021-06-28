@@ -13,3 +13,6 @@ print(odd)
 sentence = "The strange guy looked at me"
 letters = sorted(sentence, key=str.casefold)
 print(letters)
+
+digits = sorted("9384934530945039485")
+print(digits)

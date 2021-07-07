@@ -45,3 +45,22 @@ for index, value in enumerate(list2[::-1]):
 
 del list2[stop:]
 print(list2)
+
+# safe removing items from list using backward traversing
+data = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+min_valid = 5
+max_valid = 10
+
+for index in range(len(data)-1, -1, -1):
+    if data[index] < min_valid or data[index] > max_valid:
+        del data[index]
+print("Data after removing values lower then {} and greater then {}: {}".format(min_valid, max_value, data))
+
+# use of reversed() function
+top_index = len(data) - 1
+min_valid = 6
+max_valid = 9
+for index, value in enumerate(reversed(data)):
+    if value < min_valid or value > max_valid:
+        del data[top_index-index]
+print("Data after removing values lower then {} and greater then {}: {}".format(min_valid, max_value, data))

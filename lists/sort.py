@@ -4,12 +4,14 @@ print(even)
 odd.extend(even)
 print(odd)
 
+# sorting the list
 odd.sort()
 print(odd)
 
 odd.sort(reverse=True)
 print(odd)
 
+# creating new sorted list
 sentence = "The strange guy looked at me"
 letters = sorted(sentence, key=str.casefold)
 print(letters)

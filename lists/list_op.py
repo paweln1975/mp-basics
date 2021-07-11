@@ -64,3 +64,37 @@ for index, value in enumerate(reversed(data)):
     if value < min_valid or value > max_valid:
         del data[top_index-index]
 print("Data after removing values lower then {} and greater then {}: {}".format(min_valid, max_value, data))
+
+
+# Nested list
+even = [2, 4, 6, 8]
+odd = [1, 3, 5]
+
+con_list = [even, odd]
+print("List: {}".format(con_list))
+
+# Number of element occurrences
+print(computer_parts)
+print("Count: {}".format(computer_parts.count("trackball")))
+
+challange1 = [
+    ["test", "a", "b", "c"],
+    ["e", "f", "g"],
+    ["h", "Test", "test", "j"],
+]
+
+for list3 in challange1:
+    top_idx = len(list3) - 1
+    for index, item in enumerate(reversed(list3)):
+        if item.casefold() == "test":
+            del list3[top_idx - index]
+    print(list3, end=' ')
+
+print()
+
+for list4 in challange1:
+    items = ", ".join(item for item in list4 if item.casefold() != "test")
+    print(items)
+
+
+

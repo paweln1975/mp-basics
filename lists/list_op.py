@@ -77,24 +77,25 @@ print("List: {}".format(con_list))
 print(computer_parts)
 print("Count: {}".format(computer_parts.count("trackball")))
 
-challange1 = [
+challenge1 = [
     ["test", "a", "b", "c"],
     ["e", "f", "g"],
     ["h", "Test", "test", "j"],
 ]
 
-for list3 in challange1:
+for list3 in challenge1:
     top_idx = len(list3) - 1
     for index, item in enumerate(reversed(list3)):
         if item.casefold() == "test":
             del list3[top_idx - index]
-    print(list3, end=' ')
+    print(list3, end=' Version with join: ')
+    print(", ".join(list3))
 
 print()
 
-for list4 in challange1:
+for list4 in challenge1:
     items = ", ".join(item for item in list4 if item.casefold() != "test")
     print(items)
 
-
-
+# sep is used for multiple arguments of print
+print("test1", "test 2", "test3", sep=";", end=';FINAL')

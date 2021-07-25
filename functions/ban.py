@@ -21,4 +21,3 @@ banner_text("")
 banner_text("")
 banner_text("*")
 banner_text("*")
-

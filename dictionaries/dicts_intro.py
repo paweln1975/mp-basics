@@ -15,10 +15,11 @@ print(my_car)
 
 your_car = vehicles['vw']
 print(your_car)
-your_car = vehicles.get("vw")  # if value does not exist it returns None
 
+your_car = vehicles.get("vw")  # if value does not exist it returns None
 print(your_car)
-vehicles["plane"] = "Jambo Jet"     # changing or adding
+
+vehicles["plane"] = "Jambo Jet"  # changing or adding
 del vehicles["bike"]
 
 iter_over_dict(vehicles)

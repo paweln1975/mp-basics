@@ -1,6 +1,7 @@
 from content import recipies, ingredients
 
 display_menu = {}
+shopping_list = {}
 
 for index, key in enumerate(recipies):
     print(index, key)
@@ -22,10 +23,13 @@ for item, amount_req in meal_ingredients.items():
         print("We have {} of {}".format(amount_avail, item))
         if amount_req > amount_avail:
             print("WARN for {} - not enough.".format(item))
+            shopping_list[item] = amount_req - amount_avail
     else:
         print("No ingredient: {}".format(item))
+        shopping_list[item] = amount_req
 
 # create a shopping list of missing items
-
+for key, value in shopping_list.items():
+    print("Shopping item: {} amount needed: {}".format(key, value))
 
 

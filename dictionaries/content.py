@@ -6,12 +6,15 @@ ingredients = {
     "chili": 50,
 }
 
-recipies = {
+recipes = {
     "fried chicken": {"chicken": 10,
                       "oil": 50,
                       "corn": 1
                       },
-    "cooked chicken": {"chicken": 20,
+    "cooked chicken": {"chicken": 250,
                        "salt": 100,
                        "chili": 30},
+    "boiled chicken": {"chicken": 30,
+                       "salt": 100,
+                       "chili": 25}
 }

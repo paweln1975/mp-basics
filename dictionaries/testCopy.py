@@ -1,10 +1,10 @@
 import unittest
-import ex_dict_copy
+from ex_dict_copy import DictUtils
 
 
 class TestDeepCopy(unittest.TestCase):
     def setUp(self):
-        self.testCopy = ex_dict_copy.DictUtils()
+        self.testCopy = DictUtils()
 
     def tearDown(self) -> None:
         self.testCopy = None
@@ -24,6 +24,16 @@ class TestDeepCopy(unittest.TestCase):
 
         dc["a"]["b"] = 10
         self.assertNotEqual(d["a"]["b"], dc["a"]["b"])
+
+    def testAttributeError(self):
+        d = {"a": 1}
+
+        with self.assertRaises(AttributeError):
+            self.testCopy.my_dict_copy(d)
+
+        no_d = 1
+        with self.assertRaises(AttributeError):
+            self.testCopy.my_dict_copy(no_d)
 
 
 if __name__ == '__main__':

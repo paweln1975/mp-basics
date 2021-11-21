@@ -12,9 +12,12 @@ print(f"Union:{sorted(set3)}")
 set3 = set1.intersection(set2)
 print(f"Intersection:{sorted(set3)}")
 
-# difference
+# difference - returns a new set
 set3 = set1 - set2
 print(f"Difference:{sorted(set3)}")
+
+set3.difference_update(["a"])
+print(f"Difference update :{sorted(set3)}")
 
 # symmetric difference - opposite to intersection   ^ operator
 set3 = set1.symmetric_difference(set2)

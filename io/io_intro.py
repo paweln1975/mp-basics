@@ -2,6 +2,7 @@ def sep():
     print()
     print("*" * 80)
 
+
 # reading text file
 try:
     jabber = open("/home/centos/IdeaProjects/mp-basics/io/sample.txt", mode='r')

@@ -46,7 +46,7 @@ sep()
 
 # using read and displaying backwards
 with open("/home/centos/IdeaProjects/mp-basics/io/sample.txt", mode='r') as jabber:
-    lines=jabber.read()
+    lines = jabber.read()
 
 for line in lines[::-1]:
     print(line, end="")

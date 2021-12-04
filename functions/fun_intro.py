@@ -35,6 +35,19 @@ def is_palindrome_sentence(word):
     return is_palindrome(clean_word)
 
 
+def center_text(*args):
+    for arg in args:
+        t = str(arg)
+        left_margin = (80 - len(t)) // 2
+        print(" " * left_margin, t)
+
+
+center_text("Michael Jordan")
+center_text("23")
+center_text("Chicago Bulls")
+
+center_text("AAA", "BBB", "CCC")
+
 print(multiply(10, 20))
 print(multiply(5, 2.1))
 

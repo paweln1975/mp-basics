@@ -16,6 +16,14 @@ def fib(n: int = 1) -> int:
     return ret_value
 
 
+def fibr(n: int = 1) -> int:
+    if n < 2:
+        return n
+    else:
+        return fibr(n-1) + fibr(n-2)
+
+
 val_start = 1
-for k in range(val_start, val_start + 10):
-    print("Fibonacci for {0} equals {1}".format(k, fib(k)))
+val_end = 35
+for k in range(val_start, val_end+1):
+    print("Fibonacci for {0} equals {1} or recursive {2}".format(k, fib(k), fibr(k)))

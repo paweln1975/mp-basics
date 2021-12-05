@@ -39,7 +39,9 @@ def center_text(*args, sep=' ', end=''):
     text = ""
     for arg in args:
         t = str(arg)
-        text += t + sep
+        text += t + sep * (1 if len(args) > 1 else 0)
+    if len(args) > 1:
+        text = text.strip()
     left_margin = (80 - len(text)) // 2
     text = " " * left_margin + text
     return text + end
@@ -48,7 +50,7 @@ def center_text(*args, sep=' ', end=''):
 print(center_text("Michael Jordan"))
 print(center_text("23"))
 print(center_text("Chicago Bulls"))
-print(center_text("AAA", "BBB", "CCC"))
+print(center_text("AAA", "BBB", "CCC", 12))
 
 print(multiply(10, 20))
 print(multiply(5, 2.1))

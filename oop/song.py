@@ -5,26 +5,38 @@ class Song:
     """Class represents a song
     Attributes:
         title (str): The title
-        artist (Artist): The artists
         duration (int): The duration
     """
 
-    def __init__(self, title, artist, duration=0):
+    def __init__(self, title, duration=0):
         """Song init method
 
         :param title: The title
-        :param artist: The artist object
         :param duration: Initial value for duration
         :return:
         """
         self.title = title
-        self.artist = artist
-        self.duration = duration
+        if duration > 0:
+            self._duration = duration
+        else:
+            self._duration = 0
 
     def get_title(self):
         return self.title
 
     name = property(get_title)
+
+    def _get_duration(self):
+        return self._duration
+
+    def _set_duration(self, duration):
+        if duration > 0:
+            self._duration = duration
+
+    duration = property(_get_duration, _set_duration)
+
+    def __str__(self):
+        return "Title: {0.name}, Duration: {0.duration}".format(self)
 
 
 class Album:
@@ -33,32 +45,29 @@ class Album:
     Attributes:
         name (str): The name
         year (int): The year of publishing
-        artist (Artist): The artist
         tracks (List[Song]): The songs list
 
     Methods:
         add_song: used to add a song
     """
 
-    def __init__(self, name, year, artist=None):
+    def __init__(self, name, year):
         self.name = name
         self.year = year
-        if artist is None:
-            self.artist = Artist("Various Artists")
-        else:
-            self.artist = artist
         self.tracks = []
 
-    def add_song(self, song, position=None):
+    def add_song(self, song, duration=0, position=None):
         """Add a song
 
         Args:
             song (Song): A song to be added
             position (Optional[int]): position
+            duration (int): duration of the song
         """
         new_song = find_object(song, self.tracks)
         if new_song is None:
-            new_song = Song(song, self.artist)
+            new_song = Song(song)
+            new_song.duration = duration
             if position is None:
                 self.tracks.append(new_song)
             else:
@@ -89,7 +98,7 @@ class Artist:
         """Add a new song"""
         new_album = find_object(name, self.albums)
         if new_album is None:
-            new_album = Album(name, year, self)
+            new_album = Album(name, year)
             self.add_album(new_album)
         new_album.add_song(title)
 
@@ -102,7 +111,6 @@ def find_object(field, object_list):
 
 
 def load_data():
-    new_album = None
     artist_list = []
 
     print(f"Current dir: {os.getcwd()}")

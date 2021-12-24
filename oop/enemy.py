@@ -1,5 +1,6 @@
 import random
 
+
 class Enemy(object):
 
     def __init__(self, name: str, level: int = 1, damage: int = 23):

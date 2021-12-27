@@ -11,12 +11,12 @@ config = {
 cnx = mysql.connector.connect(**config)
 cursor = cnx.cursor()
 
-query = "SELECT first_name, last_name FROM author order by last_name"
+query = "SELECT id, first_name, last_name FROM author order by last_name"
 
 cursor.execute(query)
 
-for (first_name, last_name) in cursor:
-    print(f"{first_name}, {last_name}")
+for (id, first_name, last_name) in cursor:
+    print(f"{id}:{first_name}, {last_name}")
 
 cursor.close()
 cnx.close()

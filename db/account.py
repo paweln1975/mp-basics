@@ -1,5 +1,6 @@
 import mysql.connector
 import datetime
+import pytz
 
 config = {
     'user': 'mj',
@@ -34,10 +35,14 @@ class Account(object):
         """
         self.create_schema(sql_transaction)
         self.number = number
-        self.id, self.balance = self.init_account()
+        self._id, self._balance = self.init_account()
 
     def __del__(self):
         self.disconnect()
+
+    @staticmethod
+    def _current_time():
+        return pytz.utc.localize(datetime.datetime.utcnow())
 
     def connect(self):
         try:
@@ -92,9 +97,9 @@ class Account(object):
                         """
         cursor = self.connection.cursor()
         try:
-
-            cursor.execute(transaction_sql, (self.id, datetime.datetime.now(), amount))
-            cursor.execute(balance_sql, (self.id, self.id))
+            trans_time = Account._current_time()
+            cursor.execute(transaction_sql, (self._id, trans_time, amount))
+            cursor.execute(balance_sql, (self._id, self._id))
             self.connection.commit()
         except mysql.connector.Error as error:
             print("Failed to execute SQL: {}".format(error))
@@ -105,17 +110,17 @@ class Account(object):
         return True
 
     def __str__(self):
-        return "Account: number={} id={} balance={}".format(self.number, self.id, self.balance)
+        return "Account: number={} id={} balance={}".format(self.number, self._id, self._balance)
 
     def deposit(self, amount):
         if amount > 0:
             if self.create_transaction(amount):
-                self.balance += amount
+                self._balance += amount
 
     def withdraw(self, amount):
-        if 0 < amount <= self.balance:
+        if 0 < amount <= self._balance:
             if self.create_transaction(-amount):
-                self.balance -= amount
+                self._balance -= amount
 
 
 account = Account('15102010450000998000013422')
@@ -126,4 +131,11 @@ account.deposit(15)
 print(account)
 account.withdraw(20)
 print(account)
+account.disconnect()
+
+account = Account('15102010450000998000013423')
+print(account)
+account.deposit(10)
+print(account)
+
 account.disconnect()

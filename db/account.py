@@ -6,6 +6,7 @@ config = {
     'user': 'mj',
     'password': 'Mj1234!.',
     'host': '127.0.0.1',
+    'port': 3306,
     'database': 'data_schema',
     'raise_on_warnings': True
 }
@@ -14,7 +15,17 @@ config = {
 class Account(object):
 
     def __init__(self, number):
+        self.number = number
         self.connection = self.connect()
+        self._connected = True
+        self._id = 0
+        self._balance = 0
+
+        if self.connection is None:
+            self.number = "Not initialized"
+            self._connected = False
+            return
+
         sql_account = """
         CREATE TABLE IF NOT EXISTS `account` (
             `id` int NOT NULL AUTO_INCREMENT,
@@ -34,7 +45,7 @@ class Account(object):
             CONSTRAINT `fk_tran_account` FOREIGN KEY (account_id) REFERENCES account(id) ON DELETE CASCADE);
         """
         self.create_schema(sql_transaction)
-        self.number = number
+
         self._id, self._balance = self.init_account()
 
     def __del__(self):
@@ -42,19 +53,23 @@ class Account(object):
 
     @staticmethod
     def _current_time():
-        return pytz.utc.localize(datetime.datetime.utcnow())
+        localtime = pytz.utc.localize(datetime.datetime.utcnow())
+        return localtime
+
+    def check_connection(self):
+        return self._connected
 
     def connect(self):
         try:
             cnx = mysql.connector.connect(**config)
-            print("Successfully connected to db")
+            print(f"Successfully connected to db. Timezone={cnx.time_zone}")
         except mysql.connector.Error as error:
             print("Unable to connect to database. Err={}".format(error))
             cnx = None
         return cnx
 
     def disconnect(self):
-        if self.connection.is_connected():
+        if self.check_connection() and self.connection.is_connected():
             self.connection.close()
             print("Connection to db closed")
 
@@ -113,14 +128,30 @@ class Account(object):
         return "Account: number={} id={} balance={}".format(self.number, self._id, self._balance)
 
     def deposit(self, amount):
-        if amount > 0:
+        if self.check_connection() and amount > 0:
             if self.create_transaction(amount):
                 self._balance += amount
 
     def withdraw(self, amount):
-        if 0 < amount <= self._balance:
+        if self.check_connection() and 0 < amount <= self._balance:
             if self.create_transaction(-amount):
                 self._balance -= amount
+
+    def get_transactions(self):
+        if not self.check_connection():
+            return
+        transaction_sql = """SELECT id, account_id, time as trans_time, amount FROM transaction 
+                            WHERE account_id=%s ORDER BY time;"""
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute(transaction_sql, (self._id, ))
+            for id, account_id, trans_time, amount in cursor:
+                localtime = pytz.utc.localize(trans_time).astimezone()
+                print(f"id={id} Local Time={localtime}, UTC Time={trans_time} Type={type(trans_time)}")
+        except mysql.connector.Error as error:
+            print("Failed to execute SQL: {}".format(error))
+        finally:
+            cursor.close()
 
 
 account = Account('15102010450000998000013422')
@@ -137,5 +168,7 @@ account = Account('15102010450000998000013423')
 print(account)
 account.deposit(10)
 print(account)
+
+account.get_transactions()
 
 account.disconnect()

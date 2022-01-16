@@ -24,6 +24,15 @@ def sum_numbers(*args) -> float:
     return result
 
 
+def print_backward(*args, end=' ', **kwargs):
+    # *args unpacks arguments into a tuple, **kwargs unpacks var keyword arguments
+    # into a dictionary
+    kwargs.pop("end", None)
+    print(f"Kwargs={kwargs}")
+    for word in args[::-1]:
+        print(word, end=' ', **kwargs)
+
+
 numbers = (1, 2, 3, 4, 5, 6)
 
 print(numbers, sep=";")
@@ -38,3 +47,4 @@ sum_numbers(12.5, 3.147, 98.1)
 sum_numbers()
 sum_numbers(0)
 
+print_backward("hello", "world", "sun", "planet", end="", sep=":")

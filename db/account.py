@@ -106,6 +106,7 @@ class Account(object):
         return ret_id, ret_balance
 
     def create_transaction(self, amount):
+        result = True
         transaction_sql = "INSERT INTO transaction (account_id, `time`, amount) VALUES (%s, %s, %s);"
         balance_sql = """UPDATE account SET balance = (SELECT SUM(amount) FROM transaction
                         WHERE account_id = %s) WHERE id = %s;
@@ -115,14 +116,16 @@ class Account(object):
             trans_time = Account._current_time()
             cursor.execute(transaction_sql, (self._id, trans_time, amount))
             cursor.execute(balance_sql, (self._id, self._id))
-            self.connection.commit()
         except mysql.connector.Error as error:
             print("Failed to execute SQL: {}".format(error))
             self.connection.rollback()
+        else:
+            self.connection.commit()
+            result = True
         finally:
             cursor.close()
 
-        return True
+        return result
 
     def __str__(self):
         return "Account: number={} id={} balance={}".format(self.number, self._id, self._balance)

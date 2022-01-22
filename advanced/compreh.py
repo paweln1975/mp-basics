@@ -42,3 +42,25 @@ center_text("spam and eggs")
 center_text("spam", "spam")
 center_text(12, 4)
 center_text("first", "second", 3, 4, "spam")
+
+
+print("".join(["6", "=" * 40]))
+r = range(1, 51)
+even = [val for val in r if val % 2 == 1]
+print(even)
+
+print("".join(["7", "=" * 40]))
+r = range(1, 26)
+even_with_0 = [val if val % 2 == 1 else 0 for val in r]
+print(even_with_0)
+
+print("".join(["8", "=" * 40]))
+
+fizzbuzz = ["fizzbuzz" if val % 15 == 0 else "fiz" if val % 3 == 0 else "buz" if val % 5 == 0 else val for val in range(1, 31)]
+print(fizzbuzz)
+
+print("".join(["9", "=" * 40]))
+burgers = ["beef", "pork", "chicken"]
+toppings = ["cheese", "egg", "salad"]
+meals = [[(burger, topping) for burger in burgers] for topping in toppings]
+print(meals)

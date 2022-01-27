@@ -9,6 +9,7 @@
 # of one million will take a long time to run.
 
 import timeit
+from statistics import mean, stdev
 
 
 def fact(n):
@@ -38,23 +39,40 @@ def fact_gen():
 def fact_using_gen(n):
     ran = fact_gen()
     x = 0
-    for x in ran:
-        n = n - 1
-        if n == -1:
-            break
+    while n >= 0:
+        x = next(ran)
+        n -= 1
     return x
 
 
-num = 10
-calc = 50000
+num = 50
+calc = 10000
+
+# print(fact(num))
+# print(factorial(num))
+# print(fact_using_gen(num))
+
 t = timeit.Timer(lambda: fact(num))
 result1 = t.timeit(calc)
-print(f"Fact(100): {result1}")
+print(f"Fact({num}): {result1}")
 
 t = timeit.Timer(lambda: factorial(num))
 result2 = t.timeit(calc)
-print(f"Factorial(100): {result2}")
+print(f"Factorial({num}): {result2}")
 
 t = timeit.Timer(lambda: fact_using_gen(num))
 result3 = t.timeit(calc)
-print(f"Fact_using_gen(100): {result3}")
+print(f"Fact_using_gen({num}): {result3}")
+
+
+if __name__ == "__main__":
+    res_list1 = timeit.repeat(stmt="x = fact(" + str(num) + ")", setup="from __main__ import fact",
+                              number=calc, repeat=6)
+    res_list2 = timeit.repeat(stmt="x = factorial(" + str(num) + ")", setup="from __main__ import factorial",
+                              number=calc, repeat=6)
+    res_list3 = timeit.repeat(stmt="x = fact_using_gen(" + str(num) + ")", setup="from __main__ import fact_using_gen",
+                              number=calc, repeat=6)
+    print(mean(res_list1), stdev(res_list1))
+    print(mean(res_list2), stdev(res_list2))
+    print(mean(res_list3), stdev(res_list3))
+

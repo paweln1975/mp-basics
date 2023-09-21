@@ -15,3 +15,8 @@ over \
 lines")
 
 print("c:\\Users\\pawel")
+
+print("* "*4)
+for x in range(1, 3):
+    print("*     *")
+print("* "*4)

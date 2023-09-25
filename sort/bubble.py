@@ -1,4 +1,5 @@
-def bubble_sort(data: list) -> None:
+def bubble_sort(input_data: list) -> list:
+    data = input_data.copy()
     n = len(data)
     for i in range(n - 1):
         swapped = False
@@ -8,6 +9,7 @@ def bubble_sort(data: list) -> None:
                 swapped = True
         if not swapped:
             break
+    return data
 
 
 if __name__ == "__main__":

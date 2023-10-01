@@ -25,12 +25,6 @@ class TestBubbleSort(AbstractSortingTestCase, unittest.TestCase):
         return bubble_sort(input_list)
 
 
-class AISort(AbstractSortingTestCase, unittest.TestCase):
-
-    def function(self, input_list: list) -> list:
-        return ai_selection_sort(input_list)
-
-
 class TestSelectionSort(AbstractSortingTestCase, unittest.TestCase):
 
     def function(self, input_list: list) -> list:

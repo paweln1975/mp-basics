@@ -1,6 +1,7 @@
 import unittest
 from hyperskill.daily_problems import time_diff
-
+from hyperskill.daily_problems import mystery_function
+from hyperskill.daily_problems import print_book_info
 
 class TestDates(unittest.TestCase):
 
@@ -51,3 +52,48 @@ class TestDates(unittest.TestCase):
 
         diff = time_diff(h2, m2, s2, h1, m1, s1)
         self.assertEqual(diff, 3661, msg="Diff for case (3661 sec) should be 50")
+
+
+def repeat(times):
+    def repeat_helper(f):
+        def call_helper(*args):
+            for i in range(0, times):
+                f(*args)
+        return call_helper
+    return repeat_helper
+
+
+class TestMystery(unittest.TestCase):
+    @repeat(10)
+    def test_mystery_fun(self):
+        x = 5
+
+        output = mystery_function(x)
+        exp_output = [1, 3]
+
+        self.assertListEqual(output, exp_output, "Lists should have the same values.")
+
+
+class TestPrintBook(unittest.TestCase):
+    auth = "Leo Tolstoy"
+    year = 1869
+
+    def test_all(self):
+        output = print_book_info("War and Peace", self.auth, self.year)
+        exp_output = "\"War and Peace\" was written by Leo Tolstoy in 1869"
+        self.assertEqual(output, exp_output, "All data given")
+
+    def test_author(self):
+        output = print_book_info("War and Peace", self.auth)
+        exp_output = "\"War and Peace\" was written by Leo Tolstoy"
+        self.assertEqual(output, exp_output, "Author given")
+
+    def test_year(self):
+        output = print_book_info("War and Peace", None, self.year)
+        exp_output = "\"War and Peace\" was written in 1869"
+        self.assertEqual(output, exp_output, "Year given")
+
+    def test_none(self):
+        output = print_book_info("War and Peace")
+        exp_output = "\"War and Peace\""
+        self.assertEqual(output, exp_output, "Only title given")

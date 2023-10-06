@@ -36,6 +36,10 @@ def identity_function(value):
     print(id(y))
 
 
+def authenticate():
+    pass
+
+
 def print_book_info(title, author=None, year=None):
     disp_auth = "" if author is None else " by " + author
     disp_year = "" if year is None else " in " + str(year)
@@ -44,6 +48,40 @@ def print_book_info(title, author=None, year=None):
                                                           by_=disp_auth, in_=disp_year)
     print(value)
     return value
+
+
+def arithmetic_mean():
+    numbers = [5, -7, 6, 2, 5, 5, -7, -10]
+    sum_n = 0
+    for x in numbers:
+        sum_n += x
+    return sum_n / len(numbers)
+
+
+def while_loop_55() -> (int, int, int):
+    numbers = [5, -7, 6, 2, 5, 5, -7, -10, 55, 1]
+    numbers.reverse()
+    x = numbers.pop()
+    n = 0
+    sum_n = 0
+    while x != 55:
+        sum_n = sum_n + x
+        n += 1
+        x = numbers.pop()
+    return n, sum_n, round(sum_n / n)
+
+
+def print_colors():
+    colors = ["red", "yellow"]
+    for color in colors:
+        if color == "black":
+            break
+        elif color == "white":
+            continue
+        else:
+            print(color)
+    else:    # this else executed only when no break was executed
+        print("Look at all those colors!")
 
 
 if __name__ == '__main__':
@@ -76,3 +114,13 @@ if __name__ == '__main__':
     print_book_info("War and Peace", "Leo Tolstoy")
     print_book_info("War and Peace", None, 1869)
     print_book_info("War and Peace")
+
+    # print arithmetic mean
+    print(arithmetic_mean())
+    x, y, z = while_loop_55()
+    print(x)
+    print(y)
+    print(z)
+
+    # print colors
+    print_colors()

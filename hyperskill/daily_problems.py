@@ -84,6 +84,51 @@ def print_colors():
         print("Look at all those colors!")
 
 
+def print_cons_vowel(input_text: str):
+    vowels = 'aeiou'
+    for c in input_text:
+        if c in vowels:
+            print("vowel")
+        elif not c.isalpha():
+            break
+        else:
+            print("consonant")
+
+
+def print_location_cartesian(x: int, y: int):
+    if x > 0 and y > 0:
+        print("I")
+    elif x < 0 < y:
+        print("II")
+    elif x < 0 and y < 0:
+        print("III")
+    elif x > 0 > y:
+        print("IV")
+    elif x == 0 and y == 0:
+        print("It's the origin!")
+    else:
+        print("One of the coordinates is equal to zero!")
+
+
+def print_if_box_can_be_carried(A, B, C, X, Y):
+    str_ok = "The box can be carried"
+    str_not_ok = "The box cannot be carried"
+    result = False
+    if X >= A and Y >= B:
+        result = True
+    elif X >= A and Y >= C:
+        result = True
+    elif X >= B and Y >= C:
+        result = True
+    else:
+        result = False
+
+    if result:
+        print(str_ok)
+    else:
+        print(str_not_ok)
+
+
 if __name__ == '__main__':
     # object of the class House
     new_house = House()
@@ -124,3 +169,19 @@ if __name__ == '__main__':
 
     # print colors
     print_colors()
+
+    # print vowels
+    print_cons_vowel("abc def")
+
+    # print cartesian location
+    print_location_cartesian(1, 1)
+    print_location_cartesian(-1, 1)
+    print_location_cartesian(-1, -1)
+    print_location_cartesian(1, -1)
+    print_location_cartesian(0, 1)
+    print_location_cartesian(1, 0)
+    print_location_cartesian(0, 0)
+
+    # print box
+    print_if_box_can_be_carried(24, 21, 11, 36, 80)
+    print_if_box_can_be_carried(80, 50, 80, 33, 78)

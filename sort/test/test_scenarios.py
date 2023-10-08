@@ -1,7 +1,9 @@
 import unittest
+import sys
 from sort.bubble import bubble_sort
 from sort.selection import selection_sort
-from sort.ai_proposal import ai_selection_sort
+from sort.quick_sort import quick_sort
+
 
 class AbstractSortingTestCase:
 
@@ -18,6 +20,22 @@ class AbstractSortingTestCase:
 
         self.assertListEqual(input_list, input_list_c)
 
+    def test_empty_input(self):
+        input_list = []
+        input_list_c = input_list.copy()
+        self.function(input_list)
+
+        self.assertListEqual(input_list, input_list_c)
+
+    def test_10k_table(self):
+        sys.setrecursionlimit(10000)
+
+        input_list = [x for x in range(5000, 0, -1)]
+        expected_output = input_list.copy()
+        expected_output.sort()
+        result = self.function(input_list)
+        self.assertListEqual(result, expected_output)
+
 
 class TestBubbleSort(AbstractSortingTestCase, unittest.TestCase):
 
@@ -31,3 +49,7 @@ class TestSelectionSort(AbstractSortingTestCase, unittest.TestCase):
         return selection_sort(input_list)
 
 
+class TestQuickSort(AbstractSortingTestCase, unittest.TestCase):
+
+    def function(self, input_list: list) -> list:
+        return quick_sort(input_list)

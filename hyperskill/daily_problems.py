@@ -129,6 +129,12 @@ def print_if_box_can_be_carried(A, B, C, X, Y):
         print(str_not_ok)
 
 
+def print_formatter_float(input_float, precision):
+    str_to_format = "{:." + str(precision) + "f}"
+
+    print(str_to_format.format(input_float))
+
+
 if __name__ == '__main__':
     # object of the class House
     new_house = House()
@@ -185,3 +191,5 @@ if __name__ == '__main__':
     # print box
     print_if_box_can_be_carried(24, 21, 11, 36, 80)
     print_if_box_can_be_carried(80, 50, 80, 33, 78)
+
+    print_formatter_float(1/2, 3)

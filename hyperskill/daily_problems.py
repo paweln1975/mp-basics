@@ -135,6 +135,21 @@ def print_formatter_float(input_float, precision):
     print(str_to_format.format(input_float))
 
 
+def find_number(input_list_str: str, searched_num: int) -> str:
+    input_list = input_list_str.split(sep=' ')
+    output_list = [str(index) for index, item in enumerate(input_list) if item == str(searched_num)]
+    return ' '.join(output_list) if output_list else 'not found'
+
+
+def dict_check(input_list_str: str) -> str:
+    dictionary = ['all', 'an', 'and', 'as', 'closely', 'correct', 'equivocal',
+                  'examine', 'indication', 'is', 'means', 'minutely', 'or', 'scrutinize',
+                  'sign', 'the', 'to', 'uncertain']
+    input_list = input_list_str.split(sep=' ')
+    list_missing = [item for item in input_list if item not in dictionary]
+    return '\n'.join(list_missing) if list_missing else 'OK'
+
+
 if __name__ == '__main__':
     # object of the class House
     new_house = House()
@@ -193,3 +208,9 @@ if __name__ == '__main__':
     print_if_box_can_be_carried(80, 50, 80, 33, 78)
 
     print_formatter_float(1/2, 3)
+
+    # join/split
+    print(find_number('5 8 2 7 8 8 2 4', 8))
+
+    print(dict_check('srutinize is to examene closely and minutely'))
+    print(dict_check('all correct'))

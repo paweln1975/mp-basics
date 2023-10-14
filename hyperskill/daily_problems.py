@@ -150,6 +150,31 @@ def dict_check(input_list_str: str) -> str:
     return '\n'.join(list_missing) if list_missing else 'OK'
 
 
+def closest_higher_mod_5(x):
+    for i in range(0, 5):
+        remainder = (x + i) % 5
+        if remainder == 0:
+            return x + i
+    return "I don't know :("
+
+
+def create_url(host='localhost', port=443):
+    return "https://{}:{}".format(host, str(port))
+
+
+def heading(text, level=1):
+    if level < 1:
+        level = 1
+    elif level > 6:
+        level = 6
+
+    return "#"*level + " " + text
+
+
+def code(language='Python'):
+    print("We code in {language}".format(language=language))
+
+
 if __name__ == '__main__':
     # object of the class House
     new_house = House()
@@ -214,3 +239,9 @@ if __name__ == '__main__':
 
     print(dict_check('srutinize is to examene closely and minutely'))
     print(dict_check('all correct'))
+
+    # closest to x divided by 5
+    print(closest_higher_mod_5(40))
+    print(closest_higher_mod_5(43))
+
+    print(heading("A"))

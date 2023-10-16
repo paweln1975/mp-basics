@@ -1,4 +1,5 @@
 import time
+import math
 from datetime import datetime
 
 
@@ -175,6 +176,45 @@ def code(language='Python'):
     print("We code in {language}".format(language=language))
 
 
+class Hexagon:
+    def __init__(self, side_length):
+        self.side_length = side_length
+
+    # create get_area here
+    def get_area(self):
+        return ((3 * math.sqrt(3) * self.side_length * self.side_length / 2) * 1000) / 1000
+
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def dist(self, p2):
+        return math.sqrt(math.pow(self.x - p2.x, 2) + math.pow(self.y - p2.y, 2))
+
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    # create the method greet here
+    def greet(self):
+        return "Hello, I am {}!".format(self.name)
+
+
+# our class Ship
+class Ship:
+    def __init__(self, name, capacity):
+        self.name = name
+        self.capacity = capacity
+        self.cargo = 0
+
+    # the old sail method that you need to rewrite
+    def sail(self, dest):
+        return "The {name} has sailed for {dest}!".format(name=self.name, dest=dest)
+
+
 if __name__ == '__main__':
     # object of the class House
     new_house = House()
@@ -245,3 +285,19 @@ if __name__ == '__main__':
     print(closest_higher_mod_5(43))
 
     print(heading("A"))
+
+    # Hexagon
+    print(Hexagon(1).get_area())
+
+    #print distance
+    p1 = Point(1.5, 1)
+    p2 = Point(1.5, 2)
+
+    print(p1.dist(p2))
+
+    n = 10
+    p = Person(n)
+    print(p.greet())
+
+    black_pearl = Ship("Black Pearl", 800)
+    print(black_pearl.sail("No way"))

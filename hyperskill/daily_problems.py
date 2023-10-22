@@ -81,7 +81,7 @@ def print_colors():
             continue
         else:
             print(color)
-    else:    # this else executed only when no break was executed
+    else:  # this else executed only when no break was executed
         print("Look at all those colors!")
 
 
@@ -169,7 +169,7 @@ def heading(text, level=1):
     elif level > 6:
         level = 6
 
-    return "#"*level + " " + text
+    return "#" * level + " " + text
 
 
 def code(language='Python'):
@@ -213,6 +213,16 @@ class Ship:
     # the old sail method that you need to rewrite
     def sail(self, dest):
         return "The {name} has sailed for {dest}!".format(name=self.name, dest=dest)
+
+
+class House1:
+    def __init__(self, floors):
+        self.floors = floors
+        self.color = None
+
+    # create the method here
+    def paint(self, color):
+        self.color = color
 
 
 if __name__ == '__main__':
@@ -272,7 +282,7 @@ if __name__ == '__main__':
     print_if_box_can_be_carried(24, 21, 11, 36, 80)
     print_if_box_can_be_carried(80, 50, 80, 33, 78)
 
-    print_formatter_float(1/2, 3)
+    print_formatter_float(1 / 2, 3)
 
     # join/split
     print(find_number('5 8 2 7 8 8 2 4', 8))
@@ -289,7 +299,7 @@ if __name__ == '__main__':
     # Hexagon
     print(Hexagon(1).get_area())
 
-    #print distance
+    # print distance
     p1 = Point(1.5, 1)
     p2 = Point(1.5, 2)
 

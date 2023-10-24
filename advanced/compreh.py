@@ -64,3 +64,9 @@ burgers = ["beef", "pork", "chicken"]
 toppings = ["cheese", "egg", "salad"]
 meals = [[(burger, topping) for burger in burgers] for topping in toppings]
 print(meals)
+
+# the following line reads the list from the input; do not modify it, please
+my_numbers = [int(x) for x in input().split(" ")]
+
+# work with the variable 'my_numbers'
+print([item for item in my_numbers if item % 2 == 0])

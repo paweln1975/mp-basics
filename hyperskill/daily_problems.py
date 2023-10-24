@@ -225,6 +225,35 @@ class House1:
         self.color = color
 
 
+class Patient:
+    def __init__(self, name, last_name, age):
+        self.name = name
+        self.last_name = last_name
+        self.age = age
+
+    # create methods here
+    def __repr__(self):
+        return "Object of the class Patient. name: {name}, last_name: {last_name}, age: {age}"\
+            .format(name=self.name, last_name=self.last_name, age=self.age)
+
+    def __str__(self):
+        return "{name} {last_name}. {age}" \
+            .format(name=self.name, last_name=self.last_name, age=self.age)
+
+    def __new__(cls, name, last_name, age):
+        return object.__new__(cls)
+
+
+class Puppy:
+    n_puppies = 0  # number of created puppies
+
+    # define __new__
+    def __new__(cls):
+        if cls.n_puppies < 10:
+            cls.n_puppies += 1
+            return object.__new__(cls)
+
+
 if __name__ == '__main__':
     # object of the class House
     new_house = House()
@@ -311,3 +340,5 @@ if __name__ == '__main__':
 
     black_pearl = Ship("Black Pearl", 800)
     print(black_pearl.sail("No way"))
+
+

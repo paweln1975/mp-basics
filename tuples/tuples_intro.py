@@ -33,3 +33,6 @@ x, y, z = data_list
 print(x)
 x = 30
 print(x, y, z)
+
+tuple_var = tuple(data_list)
+print(tuple_var)

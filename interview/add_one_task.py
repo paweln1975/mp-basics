@@ -1,6 +1,18 @@
 class Interview:
+    """Class representing interview questions and solutions."""
 
     def __init__(self, alternate_alg=False):
+        """Initializes the object Interview.
+
+        Args:
+          alternate_alg: Use alternative algorithm.
+
+        Returns:
+          Nothing. This is only initialize method.
+
+        Raises:
+          No exception is raised.
+        """
         self.input_list = []
         self.alternate_alg = alternate_alg
 

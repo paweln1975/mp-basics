@@ -2,6 +2,7 @@ import unittest
 from hyperskill.daily_problems import time_diff
 from hyperskill.daily_problems import mystery_function
 from hyperskill.daily_problems import print_book_info
+from hyperskill.daily_problems import count_unique_letters, count_word_occurrence, min_max_op_on_keys
 
 class TestDates(unittest.TestCase):
 
@@ -97,3 +98,44 @@ class TestPrintBook(unittest.TestCase):
         output = print_book_info("War and Peace")
         exp_output = "\"War and Peace\""
         self.assertEqual(output, exp_output, "Only title given")
+
+
+class TestSimpleMethods(unittest.TestCase):
+
+    def test_count_unique_letters(self):
+        test_var = "mississippi"
+
+        ret_value = count_unique_letters(test_var)
+        self.assertEqual(4, ret_value, msg="Wrong unique letters")
+
+    def test_count_unique_letters_0(self):
+        test_var = ""
+
+        ret_value = count_unique_letters(test_var)
+        self.assertEqual(0, ret_value, msg="Wrong unique letters for empty string")
+
+    def test_count_word_occurrence(self):
+        value = "a aa abC aa ac abc bcd a"
+        exp_value = {"a": 2, "aa": 2, "abc": 2, "ac": 1, "bcd": 1}
+        list_ret = count_word_occurrence(value)
+        self.assertDictEqual(exp_value, list_ret)
+
+    def test_count_str_occurrence(self):
+        value = "a A a"
+        exp_value = {"a": 3}
+        list_ret = count_word_occurrence(value)
+        self.assertDictEqual(exp_value, list_ret)
+
+    def test_min_max_op_on_keys(self):
+        d = {"a": 43, "b": 1233, "c": 8}
+        exp_value_min = "min: c"
+        ret_value = min_max_op_on_keys(d, False)
+        self.assertEqual(ret_value, exp_value_min)
+
+    def test_max_max_op_on_keys(self):
+        d = {"a": 43, "b": 1233, "c": 8}
+        exp_value_max = "max: b"
+        ret_value = min_max_op_on_keys(d, True)
+        self.assertEqual(ret_value, exp_value_max)
+
+

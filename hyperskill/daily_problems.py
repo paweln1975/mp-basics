@@ -172,6 +172,29 @@ def heading(text, level=1):
     return "#" * level + " " + text
 
 
+def count_unique_letters(text: str) -> int:
+    inner_list = list(text)
+    inner_set = {c for c in inner_list}
+    return len(inner_set)
+
+
+def count_word_occurrence(text: str) -> dict:
+    words = text.lower().split(" ")
+    words_dict = {w: words.count(w) for w in words}
+    for key in sorted(words_dict.keys()):
+        print(key + ' ' + str(words_dict[key]))
+    return words_dict
+
+
+def min_max_op_on_keys(text, order: bool):
+    keys_min = sorted([(key, value) for key, value in text.items()], key=lambda x: x[1], reverse=order)
+    if order:
+        return "max: " + keys_min[0][0]
+    else:
+        return "min: " + keys_min[0][0]
+
+
+
 def code(language='Python'):
     print("We code in {language}".format(language=language))
 
@@ -341,4 +364,7 @@ if __name__ == '__main__':
     black_pearl = Ship("Black Pearl", 800)
     print(black_pearl.sail("No way"))
 
+    test_dict = {"a": 43, "b": 1233, "c": 8}
 
+    print(min_max_op_on_keys(test_dict, True))
+    print(min_max_op_on_keys(test_dict, False))

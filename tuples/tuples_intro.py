@@ -36,3 +36,8 @@ print(x, y, z)
 
 tuple_var = tuple(data_list)
 print(tuple_var)
+
+# print last element of a tuple
+numbers = tuple(n for n in range(1, 10))
+print(numbers[len(numbers)-1])
+print(numbers[-1])

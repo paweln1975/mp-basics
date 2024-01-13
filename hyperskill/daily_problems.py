@@ -194,7 +194,6 @@ def min_max_op_on_keys(text, order: bool):
         return "min: " + keys_min[0][0]
 
 
-
 def code(language='Python'):
     print("We code in {language}".format(language=language))
 
@@ -256,7 +255,7 @@ class Patient:
 
     # create methods here
     def __repr__(self):
-        return "Object of the class Patient. name: {name}, last_name: {last_name}, age: {age}"\
+        return "Object of the class Patient. name: {name}, last_name: {last_name}, age: {age}" \
             .format(name=self.name, last_name=self.last_name, age=self.age)
 
     def __str__(self):
@@ -275,6 +274,14 @@ class Puppy:
         if cls.n_puppies < 10:
             cls.n_puppies += 1
             return object.__new__(cls)
+
+
+def startswith_capital_counter(names):
+    count = 0
+    for name in names:
+        if name[0].isupper():
+            count = count + 1
+    return count
 
 
 if __name__ == '__main__':

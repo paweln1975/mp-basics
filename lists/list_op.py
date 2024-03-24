@@ -99,3 +99,13 @@ for list4 in challenge1:
 
 # sep is used for multiple arguments of print
 print("test1", "test 2", "test3", sep=";", end=';FINAL')
+
+print()
+numbers_txt = "2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40"
+numbers = [int(num) for num in numbers_txt.split()]
+
+print(numbers[16:3:-1])  # the line with an error
+
+nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(nums[1::2])
+print(nums[::-2])

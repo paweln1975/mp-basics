@@ -1,5 +1,6 @@
 import time
 import math
+import copy
 from datetime import datetime
 
 
@@ -284,6 +285,16 @@ def startswith_capital_counter(names):
     return count
 
 
+def bubble_sort(a):
+    a = copy.copy(a)
+    n = len(a)
+    for i in range(n - 1):
+        for j in range(n - i - 1):
+            if a[j] > a[j + 1]:
+                a[j], a[j + 1] = a[j + 1], a[j]
+    return a
+
+
 if __name__ == '__main__':
     # object of the class House
     new_house = House()
@@ -375,3 +386,18 @@ if __name__ == '__main__':
 
     print(min_max_op_on_keys(test_dict, True))
     print(min_max_op_on_keys(test_dict, False))
+
+    # where copying takes place
+    arr = [int(i) for i in '2 1 3'.split()]
+    sorted_arr = bubble_sort(arr)
+
+    print(arr)
+    if arr == sorted_arr:
+        print('sorted')
+    else:
+        print('not sorted')
+
+    my_list = [[1], [2, 1]]
+    list_copy = copy.deepcopy(my_list)
+
+    print(id(my_list) == id(list_copy))

@@ -6,12 +6,12 @@ artist_data = "Dire Straits", "Mark Knopfler", "Brothers in Arms", ((1, "Track 1
 even = list(range(0, 100, 2))
 odd = list(range(1, 101, 2))
 
-with open("/home/centos/IdeaProjects/mp-basics/artist.pickle", "wb") as pickle_file:
+with open("/home/centos/IdeaProjects/mp-basics.py/artist.pickle", "wb") as pickle_file:
     pickle.dump(artist_data, pickle_file)
     pickle.dump(even, pickle_file)
     pickle.dump(odd, pickle_file)
 
-with open("/home/centos/IdeaProjects/mp-basics/artist.pickle", "rb") as pickle_file:
+with open("/home/centos/IdeaProjects/mp-basics.py/artist.pickle", "rb") as pickle_file:
     artist_data2 = pickle.load(pickle_file)
     even_list = pickle.load(pickle_file)
     odd_list = pickle.load(pickle_file)

@@ -1,7 +1,7 @@
 import os
 import fnmatch
 
-root = "/home/centos/IdeaProjects/mp-basics"
+root = "/home/centos/IdeaProjects/mp-basics.py"
 
 for path, directories, files in os.walk(root, topdown=True):
     if path.find(".git") == -1:

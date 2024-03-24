@@ -13,9 +13,9 @@
 
 import shelve
 
-locations = shelve.open("/home/centos/IdeaProjects/mp-basics/locations")
+locations = shelve.open("/home/centos/IdeaProjects/mp-basics.py/locations")
 
-vocabulary = shelve.open("/home/centos/IdeaProjects/mp-basics/vocabulary")
+vocabulary = shelve.open("/home/centos/IdeaProjects/mp-basics.py/vocabulary")
 
 loc = "1"
 while True:

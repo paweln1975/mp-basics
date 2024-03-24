@@ -3,7 +3,7 @@ import logging.handlers
 import os
 
 handler = logging.handlers.WatchedFileHandler(
-    os.environ.get("LOGFILE", "/home/centos/IdeaProjects/mp-basics/example.log"))
+    os.environ.get("LOGFILE", "/home/centos/IdeaProjects/mp-basics.py/example.log"))
 formatter = logging.Formatter(logging.BASIC_FORMAT)
 handler.setFormatter(formatter)
 

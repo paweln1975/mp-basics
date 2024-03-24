@@ -1,6 +1,6 @@
 import shelve
 
-with shelve.open("/home/centos/IdeaProjects/mp-basics/locations") as locations:
+with shelve.open("/home/centos/IdeaProjects/mp-basics.py/locations") as locations:
 
     locations["0"] = {"desc": "You are sitting in front of a computer learning Python",
                   "exits": {},
@@ -27,7 +27,7 @@ with shelve.open("/home/centos/IdeaProjects/mp-basics/locations") as locations:
                   "namedExits": {"2": '2', "1": '1'}}
 
 
-with shelve.open("/home/centos/IdeaProjects/mp-basics/vocabulary") as vocabulary:
+with shelve.open("/home/centos/IdeaProjects/mp-basics.py/vocabulary") as vocabulary:
 
     vocabulary["QUIT"] = "Q"
     vocabulary["NORTH"] = "N"

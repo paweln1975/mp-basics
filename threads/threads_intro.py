@@ -1,12 +1,13 @@
-import time
+from datetime import datetime
+from time import sleep
 from threading import Thread
 
 
 def print_hello(thread, name, delay=0):
-    time.sleep(delay)
+    sleep(delay)
     print(
         f"{thread} ---> Hello {name}. The time is: \
-            \t{time.strftime("%H:%M:%S", time.localtime())}"
+            \t{datetime.now().strftime("%H:%M:%S.%f")}"
     )
 
 

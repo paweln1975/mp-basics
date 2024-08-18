@@ -9,6 +9,18 @@ class Kettle(object):
     def switch_on(self):
         self.on = True
 
+    @classmethod
+    def from_string(cls, data: str):
+        name, price = data.split(" ")
+        return cls(name, float(price))
+
+    def get_info(self) -> str:
+        return self.make + f' (price: {self.price})'
+
+    @property
+    def full_name(self):
+        return self.get_info()
+
 
 kenwood = Kettle("Kenwood", 8.99)
 
@@ -29,3 +41,43 @@ print(hamilton.__dict__)
 
 Kettle.power_source = "coal"
 print(Kettle.power_source, hamilton.power_source, kenwood.power_source)
+
+kettle_1 = Kettle.from_string("Lidl 100.99")
+print(kettle_1.get_info())
+print(kettle_1.full_name)
+
+
+class Time:
+
+    def __init__(self, hour, minute):
+        self.hour = hour
+        self.minute = minute
+
+    # use appropriate decorator
+    @classmethod
+    def from_string(cls, data):
+        hour, minute = data.split(":")
+        return cls(hour, minute)
+
+
+class Person:
+
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+
+    # use appropriate decorat
+    @classmethod
+    def from_string(cls, data):
+        name, email = data.split("-")
+        return cls(name, email)
+
+
+class Area:
+
+    def __init__(self, figure_name):
+        self.figure_name = figure_name
+
+    @staticmethod
+    def rhombus_area(a, b):
+        return float(a) * float(b) * 0.5

@@ -13,7 +13,8 @@ def bubble_sort(input_data: list) -> list:
 
 
 if __name__ == "__main__":
-    list1 = list(reversed(range(100)))
-    bubble_sort(list1)
+    list1 = list(reversed(range(3)))
+    list2 = bubble_sort(list1)
     print(list1)
+    print(list2)
 

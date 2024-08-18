@@ -8,7 +8,7 @@ print(squares)
 
 print("".join(["1", "=" * 40]))
 
-squares = [n ** 2 for n in numbers]
+squares = [n ** 2 for n in numbers if n % 2 == 0]
 print(squares)
 
 print("".join(["2", "=" * 40]))

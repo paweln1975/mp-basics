@@ -1,4 +1,4 @@
-class Interview:
+class AddOne:
     """Class representing interview questions and solutions."""
 
     def __init__(self, alternate_alg=False):

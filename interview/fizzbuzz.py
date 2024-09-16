@@ -18,7 +18,8 @@ Traceback (most recent call last):
 TypeError: end must be int
 
 >>> fizzbuzz(1, 31)
-[1, 2, 'fiz', 4, 'buz', 'fiz', 7, 8, 'fiz', 'buz', 11, 'fiz', 13, 14, 'fizzbuzz', 16, 17, 'fiz', 19, 'buz', 'fiz', 22, 23, 'fiz', 'buz', 26, 'fiz', 28, 29, 'fizzbuzz']
+[1, 2, 'fiz', 4, 'buz', 'fiz', 7, 8, 'fiz', 'buz', 11, 'fiz', 13, 14, 'fizzbuzz', 16, 17, 'fiz', 19, 'buz', 'fiz', 22, \
+23, 'fiz', 'buz', 26, 'fiz', 28, 29, 'fizzbuzz']
 
 >>> fizzbuzz(3, 4)
 ['fiz']

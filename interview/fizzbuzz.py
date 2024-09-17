@@ -1,5 +1,11 @@
 """
-Calculates typical interview question about fizz buzz
+Write a function which returns a list for integers for range from start to end values.
+If a number is divisible by 3 return 'fiz' string instead of a number. For numbers divisible by '5' return 'buz' and
+finally for number divisible by 3 and 5 return 'fizzbuzz'.
+Requirements:
+# write validation of parameters start and end
+# use python comprehension
+
 >>> import sys; sys.tracebacklimit = 0
 >>> fizzbuzz(2, 1)
 Traceback (most recent call last):

@@ -1,5 +1,26 @@
 class AddOne:
-    """Class representing interview questions and solutions."""
+    """
+    Class representing interview questions and solutions.
+    >>> a = AddOne()
+    >>> value = a.add_one([1, 0, 0])
+    >>> value
+    [1, 0, 1]
+
+    >>> input = [1, 3, 7]
+    >>> value = a.add_one(input)
+    >>> value
+    [1, 3, 8]
+
+    >>> input = [1, 3, 9]
+    >>> value = a.add_one(input)
+    >>> value
+    [1, 4, 0]
+
+    >>> input = [9, 9, 9]
+    >>> value = a.add_one(input)
+    >>> value
+    [1, 0, 0, 0]
+    """
 
     def __init__(self, alternate_alg=False):
         """Initializes the object Interview.

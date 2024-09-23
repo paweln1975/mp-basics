@@ -1,18 +1,15 @@
+"""
+Use of glob module
+"""
 import glob
-"""
-Write a function which returns a list of files names found in the HDD.
-Requirements:
-# write validation 
-# use python comprehension
-
->>> import sys; sys.tracebacklimit = 0
->>> files = find_files('io*.py')
->>> files
-['io_intro.py']
-"""
 
 def find_files(pattern) -> list[str]:
-    iter = glob.iglob(pattern, root_dir='.', recursive=True)
-    result = [file_ for file_ in iter]
+    """
+    >>> import sys; sys.tracebacklimit = 0
+    >>> files = find_files('io*.py')
+    >>> files
+    ['io_binary.py', 'io_intro.py', 'io_pickle.py', 'io_shelve.py', 'io_write.py']
+    """
+    iterated_files = glob.iglob(pattern, root_dir='.', recursive=True)
+    result = list(iterated_files)
     return result
-

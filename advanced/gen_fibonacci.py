@@ -1,4 +1,16 @@
 def gen_fib():
+    """
+        Generates an infinite sequence of Fibonacci numbers.
+
+        Yields:
+            int: The next number in the Fibonacci sequence.
+    >>> fib = gen_fib()
+    >>> value = 0
+    >>> for _ in range(10):
+    ...     value = next(fib)
+    >>> value
+    55
+    """
     a, b = 0, 1
     while 1:
         yield b

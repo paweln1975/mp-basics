@@ -31,7 +31,7 @@ Hawaii 370
 
 >>> text_xml = '<a attr="123"><b>hello</b><c/></a>'
 >>> print(get_attr_value(text_xml, 'attr'))
-123
+uu123
 >>> text_xml = '<root a1="aba" a2="caba"/>'
 >>> print(get_attr_value(text_xml, 'a3'))
 None

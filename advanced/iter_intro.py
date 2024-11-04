@@ -1,9 +1,7 @@
-from advanced.lambda_intro import list1
-
 list_1 = [1, 2, 3, 4, 5]
 list_2 = [6, 6, 6, 6, 6]
 
-for item1, item2 in zip(list1, list_2):
+for item1, item2 in zip(list_1, list_2):
     print(f"Item={item1}, {item2}")
 
 for index, item2 in enumerate(list_2):

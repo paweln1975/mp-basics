@@ -1,3 +1,34 @@
+"""
+training tuples
+>>> import sys; sys.tracebacklimit = 0
+>>> brave_heart = "Braveheart", "Mel Gibson", 2001
+>>> unpack_first_element_from_tuples(brave_heart)
+'Braveheart'
+
+>>> unpack_last_element_from_tuples(brave_heart)
+2001
+
+>>> first, second, *others, last = create_num_tuple(10)
+>>> last
+10
+
+>>> others
+[2, 3, 4, 5, 6, 7, 8, 9]
+"""
+
+def unpack_first_element_from_tuples(t):
+    first, *others = t
+    return first
+
+def unpack_last_element_from_tuples(t):
+    *others, last = t
+    return last
+
+
+def create_num_tuple(num) -> tuple:
+    return tuple(n for n in range(0, num+1))
+
+
 # Simple tuple, tuples are immutable (Benefit 1: data protection)
 t = "a", "b", "c"
 print(t)
@@ -38,6 +69,6 @@ tuple_var = tuple(data_list)
 print(tuple_var)
 
 # print last element of a tuple
-numbers = tuple(n for n in range(1, 10))
+numbers = create_num_tuple(10)
 print(numbers[len(numbers)-1])
 print(numbers[-1])

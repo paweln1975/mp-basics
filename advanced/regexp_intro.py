@@ -13,6 +13,7 @@ True
 """
 import re
 import sys
+from tempfile import template
 
 
 def simple_check(s: str, pattern: str) -> bool:
@@ -115,3 +116,39 @@ def check_email(email: str) -> bool:
     """
     template = r"^[a-z0-9_=\-.]{6,30}@(?:gmail\.com|jetbrains\.org|hyperskill\.org)$"
     return simple_check(email, template)
+
+def match_with_params(input_str: str) -> bool:
+    """
+    >>> match_with_params('NEVER gonna let you down!..')
+    True
+    """
+    template = r'never gonna let you down...'
+    match = re.match(template, input_str, flags=re.IGNORECASE + re.DOTALL)
+    return bool(match)
+
+def get_matching_length(template: str, input_str: str) -> int:
+    """
+    >>> template = r'are you ready??.?.?'
+    >>> get_matching_length(template, 'are you ready???')
+    14
+    """
+    match = re.search(template, input_str)
+    if match:
+        return match.end() - match.start()
+    else:
+        return 0
+
+def get_matching_substring(template: str, input_str: str):
+    """
+    >>> template = r'... Jude'
+    >>> get_matching_substring(template, 'are you ready???')
+    None
+
+    >>> get_matching_substring(template, 'Hey Jude')
+    Hey Jude
+    """
+    match = re.match(template, input_str)
+    if match:
+        print(match.group(0))
+    else:
+        print(None)

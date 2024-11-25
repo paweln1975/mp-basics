@@ -61,6 +61,23 @@ def regexp_replace(template, string, replacement) -> str:
     return result
 
 def anonimize(string) -> str:
+    """
+
+    anonimize(string) -> str
+        Anonimizes author names and handles in a given string by replacing them
+        with predefined placeholders.
+
+        Parameters
+        ----------
+        string : str
+            The string containing author names and handles to be anonymized.
+
+        Returns
+        -------
+        str
+            The string with author names replaced by '<AUTHOR>' and handles replaced
+            by '<HANDLE>'.
+    """
     start_text = '<AUTHOR>'
     other_text = '<HANDLE>'
 

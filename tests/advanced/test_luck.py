@@ -1,4 +1,4 @@
-# tests for the function
+# advanced for the function
 import unittest
 
 def find_luck(str) -> bool:
@@ -16,7 +16,7 @@ class TestFindLuck(unittest.TestCase):
             'luck is great but most of life is hard work'
         ]
 
-        # write your test here
+        # write your hyperskill here
         for s in strings_with_luck:
             self.assertIsNotNone(find_luck(s))
 
@@ -24,7 +24,7 @@ class TestFindLuck(unittest.TestCase):
         # checks that find_luck returns None when there is no 'luck' in the string
         strings_without_luck = ['here', 'duck', 'four', 'uckl']
 
-        # write your test here
+        # write your hyperskill here
         for s in strings_without_luck:
             self.assertIsNone(find_luck(s))
 

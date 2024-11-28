@@ -1,11 +1,11 @@
 import unittest
-import advanced.stack
+import stack
 
 
 class TestStack(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.stack = advanced.stack.Stack()
+        self.stack = stack.Stack()
 
     def test_push(self):
         self.stack.push(1)

@@ -1,5 +1,5 @@
 import unittest
-from interview.add_one_task import Interview
+from add_one_task import Interview
 
 
 class TestAddOne(unittest.TestCase):

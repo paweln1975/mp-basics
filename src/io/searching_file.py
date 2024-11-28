@@ -10,6 +10,6 @@ def find_files(pattern) -> list[str]:
     >>> files
     ['io_binary.py', 'io_intro.py', 'io_pickle.py', 'io_shelve.py', 'io_write.py']
     """
-    iterated_files = glob.iglob(pattern, root_dir='.', recursive=True)
+    iterated_files = glob.iglob(pattern, root_dir='../advanced', recursive=True)
     result = list(iterated_files)
     return result

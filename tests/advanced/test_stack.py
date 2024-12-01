@@ -1,5 +1,5 @@
 import unittest
-import stack
+from advanced import stack
 
 
 class TestStack(unittest.TestCase):

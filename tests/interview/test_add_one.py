@@ -1,11 +1,11 @@
 import unittest
-from add_one_task import Interview
+from interview.add_one_task import AddOne
 
 
 class TestAddOne(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.interview = Interview()
+        self.interview = AddOne()
 
     def test_empty_list(self):
         input_list = []

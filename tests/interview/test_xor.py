@@ -1,5 +1,5 @@
 import unittest
-from xor_impl import xor, fixed_point
+from interview.xor_impl import xor, fixed_point
 
 
 class XORTest(unittest.TestCase):

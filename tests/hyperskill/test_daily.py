@@ -1,8 +1,8 @@
 import unittest
-from daily_problems import time_diff
-from daily_problems import mystery_function
-from daily_problems import print_book_info
-from daily_problems import count_unique_letters, count_word_occurrence, min_max_op_on_keys
+from hyperskill.daily_problems import time_diff
+from hyperskill.daily_problems import mystery_function
+from hyperskill.daily_problems import print_book_info
+from hyperskill.daily_problems import count_unique_letters, count_word_occurrence, min_max_op_on_keys
 
 class TestDates(unittest.TestCase):
 

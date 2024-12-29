@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<movie_library>
+  <movie>
+    <title year="1994">Gladiator</title>
+    <director>Riddley Scott</director>
+  </movie>
+  <movie>
+    <title year="2001">Mulholland Dr.</title>
+    <director>David Lynch</director>
+  </movie>
+</movie_library>

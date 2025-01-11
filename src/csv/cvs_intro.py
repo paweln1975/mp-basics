@@ -1,5 +1,5 @@
 """
-cvs library training
+csv library training
 >>> import sys; sys.tracebacklimit = 0
 >>> output = count_sprits('available-for-consumption-year-ended-december-2019-csv.csv', 'MAGNITUDE')
 >>> print(output)
